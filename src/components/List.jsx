@@ -2,6 +2,11 @@ import { useState } from "react";
 
 const List = ({ data }) => {
   const [completed, setCompleted] = useState(false);
+
+  if(completed || !data){
+    return null;
+  }
+
   return (
     <>
       <p className={completed ? "hidden" : "text-slate-800 m-1"}>{data}</p>
@@ -20,11 +25,7 @@ const List = ({ data }) => {
           strokeWidth="1"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={
-            completed || !data
-              ? "hidden"
-              : "lucide lucide-x hover:cursor-pointer hover:scale-125 transition"
-          }
+          className="lucide lucide-x hover:cursor-pointer hover:scale-125 transition"
         >
           <path d="M18 6 6 18" />
           <path d="m6 6 12 12" />

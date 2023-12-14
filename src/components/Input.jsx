@@ -1,11 +1,8 @@
-import { forwardRef } from "react";
 
-// eslint-disable-next-line react/display-name
-const Input = forwardRef(({ onChange, toDo }, ref) => {
+const Input = ({ onChange, toDo }) => {
   return (
     <div className="bg-slate-400 flex justify-center items-center w-[100%]">
       <input
-        ref={ref}
         type="text"
         value={toDo}
         onChange={onChange}
@@ -13,6 +10,6 @@ const Input = forwardRef(({ onChange, toDo }, ref) => {
       />
     </div>
   );
-});
+};
 
 export default Input;

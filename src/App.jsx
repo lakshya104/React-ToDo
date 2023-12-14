@@ -7,13 +7,16 @@ import Button from "./components/Button";
 export default function App() {
   const [toDo, setToDo] = useState("First Task");
   const [toDoArray, setToDoArray] = useState([toDo]);
+  const [showAll, setShowAll] = useState(false);
 
   const onChange = (e) => {
     setToDo(e.target.value);
   };
 
   const onClick = () => {
-    setToDoArray((prev) => [...prev, toDo]);
+    if (toDo != "") {
+      setToDoArray((prev) => [...prev, toDo]);
+    }
     setToDo("");
   };
 
@@ -30,6 +33,24 @@ export default function App() {
             </div>
           );
         })}
+        <Button
+          title={"Show All Tasks"}
+          onClick={() => {
+            console.log(toDoArray);
+            return setShowAll((prev) => !prev);
+          }}
+        />
+        <div className="text-start">
+          {showAll &&
+            toDoArray.map((item, i) => {
+              return (
+                <li className="text-black" key={i}>
+                  {item}
+                </li>
+              );
+            })}
+
+        </div>
       </Wrapper>
     </div>
   );
