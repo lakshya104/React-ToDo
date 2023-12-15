@@ -1,14 +1,14 @@
 
-const Input = ({ onChange, toDo }) => {
+const Input = ({ onChange}) => {
   return (
-    <div className="bg-slate-400 flex justify-center items-center w-[100%]">
-      <input
+    // 
+      <input 
         type="text"
-        value={toDo}
+        placeholder="Enter your tasks!"
         onChange={onChange}
-        className="bg-white rounded-xl p-2 m-2 text-black outline-none"
+        className="bg-white rounded-xl p-2 m-2 text-black text-center outline-none"
       />
-    </div>
+    // </div>
   );
 };
 

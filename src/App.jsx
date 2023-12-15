@@ -5,7 +5,7 @@ import List from "./components/List";
 import Button from "./components/Button";
 
 export default function App() {
-  const [toDo, setToDo] = useState("First Task");
+  const [toDo, setToDo] = useState(null);
   const [toDoArray, setToDoArray] = useState([toDo]);
   const [showAll, setShowAll] = useState(false);
 
@@ -24,8 +24,10 @@ export default function App() {
     <div className="flex justify-center items-center">
       <Wrapper>
         <h1 className="text-3xl font-bold m-2.5">ToDo App</h1>
-        <Input onChange={onChange} toDo={toDo} onClick={onClick} />
-        <Button onClick={onClick} title={"Add"} />
+        <div className="bg-slate-400 flex justify-center items-center w-[100%] ">
+          <Input onChange={onChange} />
+          <Button onClick={onClick} title={"Add"} />
+        </div>
         {toDoArray.map((item, i) => {
           return (
             <div key={i} className="flex justify-center items-center">
@@ -44,12 +46,11 @@ export default function App() {
           {showAll &&
             toDoArray.map((item, i) => {
               return (
-                <li className="text-black" key={i}>
+                <p className="text-black" key={i}>
                   {item}
-                </li>
+                </p>
               );
             })}
-
         </div>
       </Wrapper>
     </div>
