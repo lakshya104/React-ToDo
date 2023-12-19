@@ -30,8 +30,8 @@ export default function App() {
 
   const saveEdit = () => {
     setToDoArray((prev) =>
-      prev.map((todo) =>
-        todo.id === editItemId ? { ...todo, title: editValue } : todo
+      prev.map((item) =>
+        item.id === editItemId ? { ...item, title: editValue } : item
       )
     );
     setEditValue("");
@@ -67,6 +67,8 @@ export default function App() {
         {toDoArray.map((item) => {
           return (
             <List
+              saveEdit={saveEdit}
+              onChangeEdit={onChangeEdit}
               key={item.id}
               item={item}
               edit={edit}
@@ -88,10 +90,6 @@ export default function App() {
             })}
         </div>
       </Wrapper>
-      
-      {editInput && (
-        <EditScreen saveEdit={saveEdit} onChangeEdit={onChangeEdit} />
-      )}
     </div>
   );
 }
